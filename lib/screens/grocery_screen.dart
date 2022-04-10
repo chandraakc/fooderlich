@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../models/models.dart';
 import 'empty_grocery_screen.dart';
 import 'grocery_item_screen.dart';
+import 'grocery_list_screen.dart';
 
 class GroceryScreen extends StatelessWidget {
   const GroceryScreen({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class GroceryScreen extends StatelessWidget {
         onPressed: () {
           // 1
           final manager = Provider.of<GroceryManager>(context, listen: false);
-// 2
+          // 2
           Navigator.push(
             context,
             // 3
@@ -52,8 +53,7 @@ class GroceryScreen extends StatelessWidget {
       builder: (context, manager, child) {
         // 3
         if (manager.groceryItems.isNotEmpty) {
-          // TODO 25: Add GroceryListScreen
-          return Container();
+          return GroceryListScreen(manager: manager);
         } else {
           // 4
           return const EmptyGroceryScreen();
